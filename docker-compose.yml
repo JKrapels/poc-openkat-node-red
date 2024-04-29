@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:  
+  node_red:
+    image: nodered/node-red:latest
+    container_name: nodered
+    restart: unless-stopped
+    ports:
+      - 1880:1880
+      - 1995:1995
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - node_red_data:/data
+  
+volumes:
+  node_red_data:
