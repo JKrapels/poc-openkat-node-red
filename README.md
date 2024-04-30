@@ -11,7 +11,7 @@ Running the PoC is quite simple: run the docker-compose.yml in Docker, or copy i
 The PoC consists of two main flows: one for Boefjes, and one for Whiskers. The Info and Dashboard flows are supporting.
 
 ### Boefjes flow
-The Boefjes flow contains two groups for the OpenKAT input and output, "BoefjeTasks IN from OpenKAT" and "Raw data OUT to Bytes" respectively. BoefjeTasks are currently received on port 1995 as HTTP, and output to Bytes is send using an HTTP POST to port 1997. More details on the flows and creating your own Boefjes can be found in the Flow documentation. (double click on the flow in Node-RED)
+The Boefjes flow contains two groups for the OpenKAT input and output, "BoefjeTasks IN from OpenKAT" and "Raw data OUT to Bytes" respectively. Every Boefje has its own group, with a Link in and Link out. BoefjeTasks are currently received on port 1995 as HTTP, and output to Bytes is send using an HTTP POST to port 1997. More details on the flows and creating your own Boefjes can be found in the Flow documentation. (double click on the flow in Node-RED)
 
 BoefjeTasks are currently HTTP posts with the following JSON object as the body of the request:
 ```JavaScript
@@ -33,7 +33,7 @@ Ouput to Bytes are currently HTTP posts with the following JSON object as the bo
 ```
 
 ### Whisker flow
-The Whiskers flow contains two groups for the OpenKAT input and output, "NormalizerTasks IN from OpenKAT" and "objectData data OUT to Octopoes" respectively. NormalizerTasks are currently received on port 1997 as HTTP, and output to Octopoes is send using an HTTP POST to port 1998. More details on the flows and creating your own Whiskers can be found in the Flow documentation. (double click on the flow in Node-RED)
+The Whiskers flow contains two groups for the OpenKAT input and output, "NormalizerTasks IN from OpenKAT" and "objectData data OUT to Octopoes" respectively. Every Whisker has its own group, with a Link in and Link out. NormalizerTasks are currently received on port 1997 as HTTP, and output to Octopoes is send using an HTTP POST to port 1998. More details on the flows and creating your own Whiskers can be found in the Flow documentation. (double click on the flow in Node-RED)
 
 NormalizerTasks are currently HTTP posts with the following JSON object as the body of the request:
 ```JavaScript
