@@ -26,10 +26,9 @@ BoefjeTasks are currently HTTP posts with the following JSON object as the body 
 Ouput to Bytes are currently HTTP posts with the following JSON object as the body of the request:
 ```JavaScript
 {
-  produced: "001hibpwnd",
-  input_ooid: {
-    SHA1_hash: "8be3c943b1609fffbfc51aad666d0a04adf83c9d"
-    }
+  produced: RAW_DATA,
+  boefje: BOEFJE_ID,
+  arguments: JSON_OBJECT
 }
 ```
 
@@ -37,7 +36,14 @@ Ouput to Bytes are currently HTTP posts with the following JSON object as the bo
 The Whiskers flow contains two groups for the OpenKAT input and output, "NormalizerTasks IN from OpenKAT" and "objectData data OUT to Octopoes" respectively. NormalizerTasks are currently received on port 1997 as HTTP, and output to Octopoes is send using an HTTP POST to port 1998. More details on the flows and creating your own Whiskers can be found in the Flow documentation. (double click on the flow in Node-RED)
 
 NormalizerTasks are currently HTTP posts with the following JSON object as the body of the request:
-
+```JavaScript
+{
+  produced: RAW_DATA,
+  boefje: BOEFJE_ID,
+  arguments: JSON_OBJECT
+}
+```
+Note: In the PoC, this is the same message and format as the output to Bytes. This is due to the fact that Whiskers use raw data from Bytes, and the PoC does not contain an instance of Bytes.
 
 Output to Octopoes are currently HTTP posts with the following JSON object as the body of the request:
 ```JavaScript
