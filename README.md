@@ -13,19 +13,40 @@ The PoC consists of two main flows: one for Boefjes, and one for Whiskers. The I
 ### Boefjes flow
 The Boefjes flow contains two groups for the OpenKAT input and output, "BoefjeTasks IN from OpenKAT" and "Raw data OUT to Bytes" respectively. BoefjeTasks are currently received on port 1995 as HTTP, and output to Bytes is send using an HTTP POST to port 1997. More details on the flows and creating your own Boefjes can be found in the Flow documentation. (double click on the flow in Node-RED)
 
-BoefjeTasks are currently HTTP posts with the following formatting as the body of the request:
-'''JavaScript
+BoefjeTasks are currently HTTP posts with the following JSON object as the body of the request:
+```JavaScript
 {
-  Boefje: "001hibpwnd",
+  Boefje: BOEFJE_ID,
+  input_ooid: {
+    OBJECT_TYPE: VALUE
+    }
+}
+```
+
+Ouput to Bytes are currently HTTP posts with the following JSON object as the body of the request:
+```JavaScript
+{
+  produced: "001hibpwnd",
   input_ooid: {
     SHA1_hash: "8be3c943b1609fffbfc51aad666d0a04adf83c9d"
     }
 }
-'''
+```
 
 ### Whisker flow
 The Whiskers flow contains two groups for the OpenKAT input and output, "NormalizerTasks IN from OpenKAT" and "objectData data OUT to Octopoes" respectively. NormalizerTasks are currently received on port 1997 as HTTP, and output to Octopoes is send using an HTTP POST to port 1998. More details on the flows and creating your own Whiskers can be found in the Flow documentation. (double click on the flow in Node-RED)
 
+NormalizerTasks are currently HTTP posts with the following JSON object as the body of the request:
+
+
+Output to Octopoes are currently HTTP posts with the following JSON object as the body of the request:
+```JavaScript
+{
+  Finding: JSON_OBJECT,
+  normalizer: NORMALIZER_ID,
+  arguments: JSON_OBJECT
+}
+```
 
 ## Next steps
 The obvious next step would be to connect the Node-RED container to OpenKAT. For this, two challenges have to be overcome:
