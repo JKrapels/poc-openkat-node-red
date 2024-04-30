@@ -55,6 +55,10 @@ Output to Octopoes are currently HTTP posts with the following JSON object as th
 ```
 
 ## Next steps
-The obvious next step would be to connect the Node-RED container to OpenKAT. For this, two challenges have to be overcome:
-1. Update the Node-RED flows to correctly accept and BoefjeTasks and NormalizerTasks, and ouput the right data to Bytes and Octopoes.
-2. Create a Node-RED Boefje and Node-RED Whisker in the OpenKAT KAT-alogus, where configuration for the Node-RED modules can be done.
+The next step would be to connect the Node-RED container to OpenKAT. I have built this integration to run as a container, which matches the OpenKAT infrastructure. For a working full integration in OpenKAT, three challenges have to be overcome:
+
+1. Updating the Node-RED flows to correctly accept BoefjeTasks and NormalizerTasks, and ouput the right data to Bytes and Octopoes.
+2. Adding a Node-RED container running the flows from this PoC and include it in OpenKAT's orchestration.
+3. Creating a Node-RED Boefje and Node-RED Whisker in the OpenKAT KAT-alogus, where configuration for the Node-RED modules can be done.
+
+After this, OpenKAT users should be able to create their own Boefjes and Whiskers with relative ease.
