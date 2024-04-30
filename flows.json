@@ -1,1 +1,207 @@
-
+[
+    {
+        "id": "41d9d230aa45d3a8",
+        "type": "tab",
+        "label": "0. Info",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "70471227077a0bb5",
+        "type": "group",
+        "z": "41d9d230aa45d3a8",
+        "name": "Meta",
+        "style": {
+            "fill": "#d1d1d1",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "2a827c81a8be8d5a",
+            "1b3e175d49646492",
+            "252a86ffed2d0e78"
+        ],
+        "x": 14,
+        "y": 19,
+        "w": 332,
+        "h": 162
+    },
+    {
+        "id": "388fce106481d218",
+        "type": "group",
+        "z": "41d9d230aa45d3a8",
+        "name": "Project description",
+        "style": {
+            "label": true,
+            "fill": "#d1d1d1",
+            "color": "#000000"
+        },
+        "nodes": [
+            "ebc013bfed35fa56",
+            "a714f751664fe5b2",
+            "3a43a8ed25e0c381",
+            "1c4eeda81e8d503d"
+        ],
+        "x": 374,
+        "y": 19,
+        "w": 392,
+        "h": 202
+    },
+    {
+        "id": "69723e7ff379f815",
+        "type": "group",
+        "z": "41d9d230aa45d3a8",
+        "name": "Input & output examples",
+        "style": {
+            "fill": "#d1d1d1",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "35c138eefe31d8a4"
+        ],
+        "x": 14,
+        "y": 199,
+        "w": 212,
+        "h": 82
+    },
+    {
+        "id": "2a827c81a8be8d5a",
+        "type": "comment",
+        "z": "41d9d230aa45d3a8",
+        "g": "70471227077a0bb5",
+        "name": "Author: Joost Krapels | ICT Institute",
+        "info": "",
+        "x": 180,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "1b3e175d49646492",
+        "type": "comment",
+        "z": "41d9d230aa45d3a8",
+        "g": "70471227077a0bb5",
+        "name": "Version: 1.0",
+        "info": "",
+        "x": 110,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "252a86ffed2d0e78",
+        "type": "comment",
+        "z": "41d9d230aa45d3a8",
+        "g": "70471227077a0bb5",
+        "name": "Licence: Apache 2.0",
+        "info": "",
+        "x": 130,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "ebc013bfed35fa56",
+        "type": "comment",
+        "z": "41d9d230aa45d3a8",
+        "g": "388fce106481d218",
+        "name": "Project: OpenKAT Node-RED PoC",
+        "info": "",
+        "x": 540,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "a714f751664fe5b2",
+        "type": "comment",
+        "z": "41d9d230aa45d3a8",
+        "g": "388fce106481d218",
+        "name": "Goal: NodeRED interface for OpenKAT PoC",
+        "info": "",
+        "x": 570,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "3a43a8ed25e0c381",
+        "type": "comment",
+        "z": "41d9d230aa45d3a8",
+        "g": "388fce106481d218",
+        "name": "Part of PoC: Boefjes, Whiskers",
+        "info": "",
+        "x": 530,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "1c4eeda81e8d503d",
+        "type": "comment",
+        "z": "41d9d230aa45d3a8",
+        "g": "388fce106481d218",
+        "name": "Supporting PoC: Dashboard",
+        "info": "",
+        "x": 520,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "35c138eefe31d8a4",
+        "type": "comment",
+        "z": "41d9d230aa45d3a8",
+        "g": "69723e7ff379f815",
+        "name": "Example hash:",
+        "info": "cleartext: Password\nSHA1: 8be3c943b1609fffbfc51aad666d0a04adf83c9d",
+        "x": 120,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "d30bae047655a378",
+        "type": "debug",
+        "z": "41d9d230aa45d3a8",
+        "name": "catch 1998",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "9e555e3a5d8113ae",
+        "type": "tcp in",
+        "z": "41d9d230aa45d3a8",
+        "name": "",
+        "server": "server",
+        "host": "",
+        "port": "1998",
+        "datamode": "stream",
+        "datatype": "utf8",
+        "newline": "",
+        "topic": "",
+        "trim": false,
+        "base64": false,
+        "tls": "",
+        "x": 480,
+        "y": 320,
+        "wires": [
+            [
+                "d30bae047655a378"
+            ]
+        ]
+    },
+    {
+        "id": "42ae5ad7b85e6d5c",
+        "type": "comment",
+        "z": "41d9d230aa45d3a8",
+        "name": "Needed until connection to OpenKAT",
+        "info": "",
+        "x": 560,
+        "y": 280,
+        "wires": []
+    }
+]

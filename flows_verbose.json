@@ -1,1 +1,2363 @@
-
+[
+    {
+        "id": "41d9d230aa45d3a8",
+        "type": "tab",
+        "label": "0. Info",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "fc2b7b9b90c57472",
+        "type": "tab",
+        "label": "1. Boefjes",
+        "disabled": false,
+        "info": "# General\r\n\r\nThis flow works as follows:\r\n1. The TCP connector receives BoefjeTasks from OpenKAT on port 1995\r\n2. The BoefjeTask is routed to the correct Node-RED Boefje in the node \"routeToBoefje\"\r\n3. A Node-RED Boefje is activated once it receives a message on its Link in node.\r\n4. A Boefje does its job, and provides its output to its Link out node\r\n5. In \"preparePOST\", the HTTP POST request back to Bytes is prepared\r\n\r\n# New Boefjes\r\n1. Create a new group in this flow. The naming scheme is \"#XXX_Y\", with X the ID and Y the name.\r\nTip: You can copy and paste the template Boefje and rename it.\r\n2. Edit the \"routeToBoefje\" node to create an entry and route for your Boefje\r\n3. Connect the Link in and Link out nodes of your Boefje to routeToBoefje and preparePOST respectively\r\nTip: Place a comment node between the OpenKAT groups to indicate which link nodes belong to a certain Boefje\r\n4. Process the BoefjeTask as you please in your Boefje, and inject the raw output data as the message payload to your Boefje's Link out node\r\n\r\n\r\n",
+        "env": []
+    },
+    {
+        "id": "c4ea219c57a9b6fc",
+        "type": "tab",
+        "label": "2. Whiskers",
+        "disabled": false,
+        "info": "# General\r\n\r\nThis flow works as follows:\r\n1. The TCP connector receives NormalizerTasks from OpenKAT on port 1997\r\n2. The NormalizerTask is routed to the correct Node-RED Whisker in the node \"routeToWhisker\"\r\n3. A Node-RED Whisker is activated once it receives a message on its Link in node.\r\n4. A Whisker does its job, and provides its output to its Link out node\r\n5. In \"preparePOST\", the HTTP POST request back to Octopoes is prepared\r\n\r\n# New Whiskers\r\n1. Create a new group in this flow. The naming scheme is \"#XXX_Y\", with X the ID and Y the name.\r\nTip: You can copy and paste the template Whisker and rename it.\r\n2. Edit the \"routeToWhisker\" node to create an entry and route for your Whisker\r\n3. Connect the Link in and Link out nodes of your Whisker to routeToWhisker and preparePOST respectively\r\nTip: Place a comment node between the OpenKAT groups to indicate which link nodes belong to a certain Whisker\r\n4. Process the NormalizerTask as you please in your Whisker, and inject the raw output data as the message payload to your Whisker's Link out node\r\n\r\n\r\n",
+        "env": []
+    },
+    {
+        "id": "d088de706e946215",
+        "type": "tab",
+        "label": "3. Dashboard",
+        "disabled": false,
+        "info": "This dashboard tab is not part of the final product. \r\nIt is use is to allow testing the connection to and from OpenKAT.\r\n\r\n",
+        "env": []
+    },
+    {
+        "id": "70471227077a0bb5",
+        "type": "group",
+        "z": "41d9d230aa45d3a8",
+        "name": "Meta",
+        "style": {
+            "fill": "#d1d1d1",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "2a827c81a8be8d5a",
+            "1b3e175d49646492",
+            "252a86ffed2d0e78"
+        ],
+        "x": 14,
+        "y": 19,
+        "w": 332,
+        "h": 162
+    },
+    {
+        "id": "388fce106481d218",
+        "type": "group",
+        "z": "41d9d230aa45d3a8",
+        "name": "Project description",
+        "style": {
+            "label": true,
+            "fill": "#d1d1d1",
+            "color": "#000000"
+        },
+        "nodes": [
+            "ebc013bfed35fa56",
+            "a714f751664fe5b2",
+            "3a43a8ed25e0c381",
+            "1c4eeda81e8d503d"
+        ],
+        "x": 374,
+        "y": 19,
+        "w": 392,
+        "h": 202
+    },
+    {
+        "id": "657ce9447e1e8498",
+        "type": "group",
+        "z": "c4ea219c57a9b6fc",
+        "name": "#001_HIBPwnd",
+        "style": {
+            "fill": "#bfdbef",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "0ac37ff5154b14c3",
+            "223bf92f6324f952",
+            "bbef824647dc92c6",
+            "1c82dd599fc06a04",
+            "96e29305488e8efc"
+        ],
+        "x": 34,
+        "y": 619,
+        "w": 882,
+        "h": 82
+    },
+    {
+        "id": "5db8cf2e53fb6224",
+        "type": "group",
+        "z": "fc2b7b9b90c57472",
+        "name": "#001_HIBPwnd",
+        "style": {
+            "fill": "#ffffbf",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "85acb33a4807cd9d",
+            "acbf70ef0ff6f37d",
+            "180d85aacd033290",
+            "5677e5e8be10ce51",
+            "cdec6bc3eb9e47be"
+        ],
+        "x": 14,
+        "y": 579,
+        "w": 852,
+        "h": 82,
+        "info": "Description: Boefje with ID #001_HIBPwnd\r\nTask: ...\r\nInput: ...\r\nOutput: ...\r\n"
+    },
+    {
+        "id": "a59e2bd725bacd5f",
+        "type": "group",
+        "z": "fc2b7b9b90c57472",
+        "name": "#00x_Template_boefje",
+        "style": {
+            "fill": "#ffffbf",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "e395e7ba70caca79",
+            "4a900859b211d97f",
+            "c3e330d04b4b50af"
+        ],
+        "x": 14,
+        "y": 479,
+        "w": 422,
+        "h": 82
+    },
+    {
+        "id": "5eb5f0d4d9533ec8",
+        "type": "group",
+        "z": "c4ea219c57a9b6fc",
+        "name": "#00X_Template_Whisker",
+        "style": {
+            "label": true,
+            "fill": "#bfdbef",
+            "color": "#000000"
+        },
+        "nodes": [
+            "d253516057fa5798",
+            "b4ed089d9d4f4189",
+            "78ba3ed29f66e36d"
+        ],
+        "x": 34,
+        "y": 519,
+        "w": 382,
+        "h": 82
+    },
+    {
+        "id": "ffa881965977b8b1",
+        "type": "group",
+        "z": "d088de706e946215",
+        "name": "HTTP test page",
+        "style": {
+            "fill": "#ffffbf",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "1706f4b78906b159",
+            "4ec7c865e85b0380",
+            "0a7ece1b7e8e9bf7",
+            "8d8178bf12200c7b",
+            "e9e889a5cc2e9d49",
+            "3fd4bd575accb4fc",
+            "64f03b078d21c06c",
+            "80e90011397675ae",
+            "61819423d03c87f8",
+            "88f4c857a9871988",
+            "e6ccab3f8ef2a4a0",
+            "f527fa05a9fd4208",
+            "5e8601b5e3623de2",
+            "70ef119f90b72403",
+            "8d959d7bfd066e9c",
+            "cad3742c2d14944d",
+            "7a52bc4095bdc5be",
+            "c6496e5a53174c4d",
+            "88c3e72d027b6bd2",
+            "e780b995301d6b3b",
+            "4fd3f50174e4989f"
+        ],
+        "x": 54,
+        "y": 19,
+        "w": 852,
+        "h": 542
+    },
+    {
+        "id": "69723e7ff379f815",
+        "type": "group",
+        "z": "41d9d230aa45d3a8",
+        "name": "Input & output examples",
+        "style": {
+            "fill": "#d1d1d1",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "35c138eefe31d8a4"
+        ],
+        "x": 14,
+        "y": 199,
+        "w": 212,
+        "h": 82
+    },
+    {
+        "id": "1c8db082e85f8d5e",
+        "type": "group",
+        "z": "fc2b7b9b90c57472",
+        "name": "BoefjeTasks IN from OpenKAT",
+        "style": {
+            "label": true,
+            "fill": "#ca005d",
+            "color": "#000000",
+            "fill-opacity": "0.5"
+        },
+        "nodes": [
+            "292d8ac3ed6b9bc7",
+            "040933abcabf10ab",
+            "e8373b07c6d00527",
+            "12dcf55b0432afed",
+            "a5eb8458481db515",
+            "b2db5aacfb3072b8",
+            "32dce28409dab68d",
+            "977f4ae36f240a17"
+        ],
+        "x": 14,
+        "y": 119,
+        "w": 522,
+        "h": 322
+    },
+    {
+        "id": "1f8273465d762425",
+        "type": "group",
+        "z": "fc2b7b9b90c57472",
+        "name": "Raw data OUT to Bytes",
+        "style": {
+            "label": true,
+            "color": "#000000",
+            "fill": "#ca005d",
+            "fill-opacity": "0.5"
+        },
+        "nodes": [
+            "022bd5d9af220e74",
+            "cdb22e13f1baae69",
+            "4aee373b3cb7c272",
+            "82967e31cb98969c",
+            "17b2fb6ebfdc050d",
+            "26f3528f1fee95dd",
+            "2a23e681ccc23dbc"
+        ],
+        "x": 704,
+        "y": 119,
+        "w": 482,
+        "h": 322
+    },
+    {
+        "id": "95dd8d8b215036db",
+        "type": "group",
+        "z": "c4ea219c57a9b6fc",
+        "name": "NormalizerTasks IN from OpenKAT",
+        "style": {
+            "label": true,
+            "color": "#000000",
+            "fill": "#ca005d",
+            "fill-opacity": "0.5"
+        },
+        "nodes": [
+            "61a3592b84c394d8",
+            "3a427b4c0c22778a",
+            "d4740b9c2992f229",
+            "682fae832aa4e5eb",
+            "b2a15b6fda9512a7",
+            "869e5c898a8b7659",
+            "dbe7ede0d6692828",
+            "3a230f4af525aa39"
+        ],
+        "x": 34,
+        "y": 159,
+        "w": 552,
+        "h": 322
+    },
+    {
+        "id": "e2340d371d1ebe4c",
+        "type": "group",
+        "z": "c4ea219c57a9b6fc",
+        "name": "objectData OUT to Octopoes",
+        "style": {
+            "label": true,
+            "color": "#000000",
+            "fill": "#ca005d",
+            "fill-opacity": "0.5"
+        },
+        "nodes": [
+            "2b018c9dbe7d3f3e",
+            "941ec869eebea102",
+            "125d003d0a46272e",
+            "41c261c803182533",
+            "fae5d0723f3b9bed",
+            "2ad16c66b926fa74",
+            "a27bdb5d181fa68e"
+        ],
+        "x": 774,
+        "y": 159,
+        "w": 512,
+        "h": 322
+    },
+    {
+        "id": "094b7deee473bd3a",
+        "type": "group",
+        "z": "c4ea219c57a9b6fc",
+        "name": "NEEDED FOR PoC DEMO",
+        "style": {
+            "fill": "#d1d1d1",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "f3d62834f8d55d6a",
+            "35d69871130d018d",
+            "a937a5532a67d809",
+            "833dd03dbd2a12fb",
+            "4ed30444bf6a89aa"
+        ],
+        "x": 34,
+        "y": 19,
+        "w": 1532,
+        "h": 122
+    },
+    {
+        "id": "2fa1e3c3dc7f76ae",
+        "type": "group",
+        "z": "fc2b7b9b90c57472",
+        "name": "NEEDED FOR POC DEMO",
+        "style": {
+            "fill": "#d1d1d1",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "2b75316af61ad00e",
+            "563a262f66181fa9",
+            "a420630f3830caec"
+        ],
+        "x": 14,
+        "y": 19,
+        "w": 1192,
+        "h": 82
+    },
+    {
+        "id": "006ab23af312592f",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#ca005d",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#ca005d",
+                    "edited": true
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#ca005d",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#ff1782",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#ca005d",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "OpenKAT Node-RED PoC",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "true",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "8267f84da0b376fb",
+        "type": "ui_tab",
+        "name": "Simulate OpenKAT",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "914c72c6142ddf4a",
+        "type": "ui_group",
+        "name": "Have I been Pwned",
+        "tab": "8267f84da0b376fb",
+        "order": null,
+        "disp": true,
+        "width": 10,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "e30172076a818936",
+        "type": "ui_tab",
+        "name": "HTTP traffic",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "cb7cb6b0a2b4e00b",
+        "type": "ui_group",
+        "name": "Activating a Boefje",
+        "tab": "e30172076a818936",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "d81513205be55697",
+        "type": "ui_group",
+        "name": "Activating a Whisker",
+        "tab": "e30172076a818936",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "e3a83b5904ce059a",
+        "type": "ui_group",
+        "name": "Posting back to Bytes",
+        "tab": "e30172076a818936",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "25e46aeab62c4713",
+        "type": "ui_group",
+        "name": "Posting back to Octopoes",
+        "tab": "e30172076a818936",
+        "order": 4,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "2437928e0ac274ed",
+        "type": "ui_spacer",
+        "z": "d088de706e946215",
+        "name": "spacer",
+        "group": "914c72c6142ddf4a",
+        "order": 8,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "2a827c81a8be8d5a",
+        "type": "comment",
+        "z": "41d9d230aa45d3a8",
+        "g": "70471227077a0bb5",
+        "name": "Author: Joost Krapels | ICT Institute",
+        "info": "",
+        "x": 180,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "1b3e175d49646492",
+        "type": "comment",
+        "z": "41d9d230aa45d3a8",
+        "g": "70471227077a0bb5",
+        "name": "Version: 1.0",
+        "info": "",
+        "x": 110,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "252a86ffed2d0e78",
+        "type": "comment",
+        "z": "41d9d230aa45d3a8",
+        "g": "70471227077a0bb5",
+        "name": "Licence: Apache 2.0",
+        "info": "",
+        "x": 130,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "ebc013bfed35fa56",
+        "type": "comment",
+        "z": "41d9d230aa45d3a8",
+        "g": "388fce106481d218",
+        "name": "Project: OpenKAT Node-RED PoC",
+        "info": "",
+        "x": 540,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "a714f751664fe5b2",
+        "type": "comment",
+        "z": "41d9d230aa45d3a8",
+        "g": "388fce106481d218",
+        "name": "Goal: NodeRED interface for OpenKAT PoC",
+        "info": "",
+        "x": 570,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "3a43a8ed25e0c381",
+        "type": "comment",
+        "z": "41d9d230aa45d3a8",
+        "g": "388fce106481d218",
+        "name": "Part of PoC: Boefjes, Whiskers",
+        "info": "",
+        "x": 530,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "1c4eeda81e8d503d",
+        "type": "comment",
+        "z": "41d9d230aa45d3a8",
+        "g": "388fce106481d218",
+        "name": "Supporting PoC: Dashboard",
+        "info": "",
+        "x": 520,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "35c138eefe31d8a4",
+        "type": "comment",
+        "z": "41d9d230aa45d3a8",
+        "g": "69723e7ff379f815",
+        "name": "Example hash:",
+        "info": "cleartext: Password\nSHA1: 8be3c943b1609fffbfc51aad666d0a04adf83c9d",
+        "x": 120,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "85acb33a4807cd9d",
+        "type": "link in",
+        "z": "fc2b7b9b90c57472",
+        "g": "5db8cf2e53fb6224",
+        "name": "Boefje#001_in",
+        "links": [
+            "040933abcabf10ab"
+        ],
+        "x": 55,
+        "y": 620,
+        "wires": [
+            [
+                "180d85aacd033290"
+            ]
+        ]
+    },
+    {
+        "id": "acbf70ef0ff6f37d",
+        "type": "http request",
+        "z": "fc2b7b9b90c57472",
+        "g": "5db8cf2e53fb6224",
+        "name": "request HIBPwnd data",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": true,
+        "headers": [],
+        "x": 660,
+        "y": 620,
+        "wires": [
+            [
+                "cdec6bc3eb9e47be"
+            ]
+        ]
+    },
+    {
+        "id": "180d85aacd033290",
+        "type": "function",
+        "z": "fc2b7b9b90c57472",
+        "g": "5db8cf2e53fb6224",
+        "name": "perform k-anonimity",
+        "func": "// Save the original SHA1 hash as a message property\nlet hash = msg.payload.input_ooid.SHA1_hash;\nmsg.arguments.hash = hash;\nmsg.hash = hash;\n\n// Save the annonimized version of the hash as the queriable item\nlet stripped = \"\";\nstripped = msg.payload.input_ooid.SHA1_hash.slice(0,5);\nmsg.payload = stripped;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 220,
+        "y": 620,
+        "wires": [
+            [
+                "5677e5e8be10ce51"
+            ]
+        ],
+        "outputLabels": [
+            "first 5 chars of string"
+        ]
+    },
+    {
+        "id": "5677e5e8be10ce51",
+        "type": "function",
+        "z": "fc2b7b9b90c57472",
+        "g": "5db8cf2e53fb6224",
+        "name": "set query URL",
+        "func": "let url = \"https://api.pwnedpasswords.com/range/\";\n\nmsg.url = url + msg.payload;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 620,
+        "wires": [
+            [
+                "acbf70ef0ff6f37d"
+            ]
+        ]
+    },
+    {
+        "id": "e395e7ba70caca79",
+        "type": "function",
+        "z": "fc2b7b9b90c57472",
+        "g": "a59e2bd725bacd5f",
+        "name": "yourCodeHere",
+        "func": "\nmsg.payload = \"Your output here\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 240,
+        "y": 520,
+        "wires": [
+            [
+                "c3e330d04b4b50af"
+            ]
+        ]
+    },
+    {
+        "id": "4a900859b211d97f",
+        "type": "link in",
+        "z": "fc2b7b9b90c57472",
+        "g": "a59e2bd725bacd5f",
+        "name": "Boefje#00n_in",
+        "links": [
+            "b2db5aacfb3072b8"
+        ],
+        "x": 55,
+        "y": 520,
+        "wires": [
+            [
+                "e395e7ba70caca79"
+            ]
+        ]
+    },
+    {
+        "id": "c3e330d04b4b50af",
+        "type": "link out",
+        "z": "fc2b7b9b90c57472",
+        "g": "a59e2bd725bacd5f",
+        "name": "Boefje#00n_out",
+        "mode": "link",
+        "links": [],
+        "x": 395,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "292d8ac3ed6b9bc7",
+        "type": "tcp in",
+        "z": "fc2b7b9b90c57472",
+        "g": "1c8db082e85f8d5e",
+        "name": "Receive BoefjeTask",
+        "server": "server",
+        "host": "",
+        "port": "1995",
+        "datamode": "stream",
+        "datatype": "utf8",
+        "newline": "",
+        "topic": "",
+        "trim": false,
+        "base64": false,
+        "tls": "",
+        "x": 130,
+        "y": 200,
+        "wires": [
+            [
+                "977f4ae36f240a17",
+                "2b75316af61ad00e"
+            ]
+        ]
+    },
+    {
+        "id": "040933abcabf10ab",
+        "type": "link out",
+        "z": "fc2b7b9b90c57472",
+        "g": "1c8db082e85f8d5e",
+        "name": "runBoefje#001",
+        "mode": "link",
+        "links": [
+            "85acb33a4807cd9d"
+        ],
+        "x": 495,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "e8373b07c6d00527",
+        "type": "switch",
+        "z": "fc2b7b9b90c57472",
+        "g": "1c8db082e85f8d5e",
+        "name": "routeToBoefje",
+        "property": "payload.Boefje",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "001hibpwnd",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "b",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "c",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "d",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "x",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 6,
+        "x": 340,
+        "y": 280,
+        "wires": [
+            [
+                "040933abcabf10ab"
+            ],
+            [
+                "12dcf55b0432afed"
+            ],
+            [
+                "a5eb8458481db515"
+            ],
+            [
+                "32dce28409dab68d"
+            ],
+            [
+                "b2db5aacfb3072b8"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "12dcf55b0432afed",
+        "type": "link out",
+        "z": "fc2b7b9b90c57472",
+        "g": "1c8db082e85f8d5e",
+        "name": "runBoefje#002",
+        "mode": "link",
+        "links": [],
+        "x": 495,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "a5eb8458481db515",
+        "type": "link out",
+        "z": "fc2b7b9b90c57472",
+        "g": "1c8db082e85f8d5e",
+        "name": "runBoefje#003",
+        "mode": "link",
+        "links": [],
+        "x": 495,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "b2db5aacfb3072b8",
+        "type": "link out",
+        "z": "fc2b7b9b90c57472",
+        "g": "1c8db082e85f8d5e",
+        "name": "runBoefje#00x",
+        "mode": "link",
+        "links": [
+            "4a900859b211d97f"
+        ],
+        "x": 495,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "32dce28409dab68d",
+        "type": "link out",
+        "z": "fc2b7b9b90c57472",
+        "g": "1c8db082e85f8d5e",
+        "name": "runBoefje#004",
+        "mode": "link",
+        "links": [],
+        "x": 495,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "022bd5d9af220e74",
+        "type": "link in",
+        "z": "fc2b7b9b90c57472",
+        "g": "1f8273465d762425",
+        "name": "saveBoefje#001",
+        "links": [
+            "cdec6bc3eb9e47be"
+        ],
+        "x": 745,
+        "y": 160,
+        "wires": [
+            [
+                "26f3528f1fee95dd"
+            ]
+        ]
+    },
+    {
+        "id": "cdb22e13f1baae69",
+        "type": "link in",
+        "z": "fc2b7b9b90c57472",
+        "g": "1f8273465d762425",
+        "name": "saveBoefje#002",
+        "links": [],
+        "x": 745,
+        "y": 220,
+        "wires": [
+            [
+                "26f3528f1fee95dd"
+            ]
+        ]
+    },
+    {
+        "id": "4aee373b3cb7c272",
+        "type": "link in",
+        "z": "fc2b7b9b90c57472",
+        "g": "1f8273465d762425",
+        "name": "saveBoefje#003",
+        "links": [],
+        "x": 745,
+        "y": 280,
+        "wires": [
+            [
+                "26f3528f1fee95dd"
+            ]
+        ]
+    },
+    {
+        "id": "82967e31cb98969c",
+        "type": "link in",
+        "z": "fc2b7b9b90c57472",
+        "g": "1f8273465d762425",
+        "name": "saveBoefje#004",
+        "links": [],
+        "x": 745,
+        "y": 340,
+        "wires": [
+            [
+                "26f3528f1fee95dd"
+            ]
+        ]
+    },
+    {
+        "id": "17b2fb6ebfdc050d",
+        "type": "link in",
+        "z": "fc2b7b9b90c57472",
+        "g": "1f8273465d762425",
+        "name": "saveBoefje#00x",
+        "links": [],
+        "x": 745,
+        "y": 400,
+        "wires": [
+            [
+                "26f3528f1fee95dd"
+            ]
+        ]
+    },
+    {
+        "id": "cdec6bc3eb9e47be",
+        "type": "link out",
+        "z": "fc2b7b9b90c57472",
+        "g": "5db8cf2e53fb6224",
+        "name": "Boefje#001_out",
+        "mode": "link",
+        "links": [
+            "022bd5d9af220e74"
+        ],
+        "x": 825,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "4c4cb316e7eabb66",
+        "type": "comment",
+        "z": "fc2b7b9b90c57472",
+        "name": "#001 HIBPwnd",
+        "info": "",
+        "x": 620,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "3190be7314c98e7f",
+        "type": "comment",
+        "z": "fc2b7b9b90c57472",
+        "name": "#002 XYZ",
+        "info": "",
+        "x": 620,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "30f25a9a2d76da88",
+        "type": "comment",
+        "z": "fc2b7b9b90c57472",
+        "name": "#003 XYZ",
+        "info": "",
+        "x": 620,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "5b07c227d1d1b7a1",
+        "type": "comment",
+        "z": "fc2b7b9b90c57472",
+        "name": "#004 XYZ",
+        "info": "",
+        "x": 620,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "ca8adcfc0e3614c2",
+        "type": "comment",
+        "z": "fc2b7b9b90c57472",
+        "name": "#00x Template",
+        "info": "",
+        "x": 620,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "977f4ae36f240a17",
+        "type": "function",
+        "z": "fc2b7b9b90c57472",
+        "g": "1c8db082e85f8d5e",
+        "name": "parseBoefjeTask",
+        "func": "// Split the HTTP message into multiple lines\nlet s = msg.payload.split(/\\r?\\n/);\n\n// Extract the Boefje and OOI and set them as message payload\nlet p = JSON.parse(s[7]);\nmsg.payload = p;\nmsg.boefje = msg.payload.Boefje;\n\n// Create an \"arguments\" property of the message\nmsg.arguments = {};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 150,
+        "y": 280,
+        "wires": [
+            [
+                "e8373b07c6d00527"
+            ]
+        ]
+    },
+    {
+        "id": "26f3528f1fee95dd",
+        "type": "function",
+        "z": "fc2b7b9b90c57472",
+        "g": "1f8273465d762425",
+        "name": "preparePOST",
+        "func": "// Create a clean new message for the HTTP POST node\nlet bytesMsg = {};\n\n// Set the body of the HTTP POST request to the output of the BoefjeTask\nlet requestBody = {\"produced\": msg.payload, \"boefje\": msg.boefje, \"arguments\": msg.arguments};\n\n// Embed the request body in the message for the HTTP POST\nbytesMsg.payload = requestBody;\n\n// Optional: set the headers of the HTTP POST request\nbytesMsg.headers = \"\";\n\nreturn bytesMsg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 900,
+        "y": 280,
+        "wires": [
+            [
+                "2a23e681ccc23dbc",
+                "a420630f3830caec"
+            ]
+        ]
+    },
+    {
+        "id": "2a23e681ccc23dbc",
+        "type": "http request",
+        "z": "fc2b7b9b90c57472",
+        "g": "1f8273465d762425",
+        "name": "saveToBytes",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:1996",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1090,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2b75316af61ad00e",
+        "type": "ui_text",
+        "z": "fc2b7b9b90c57472",
+        "g": "2fa1e3c3dc7f76ae",
+        "group": "cb7cb6b0a2b4e00b",
+        "order": 1,
+        "width": 6,
+        "height": 6,
+        "name": "boefjeHTTPPOST",
+        "label": "HTTP POST received from OpenKAT:",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "http2",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 330,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "563a262f66181fa9",
+        "type": "inject",
+        "z": "fc2b7b9b90c57472",
+        "g": "2fa1e3c3dc7f76ae",
+        "name": "start",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "no HTTP received",
+        "payloadType": "str",
+        "x": 110,
+        "y": 60,
+        "wires": [
+            [
+                "2b75316af61ad00e"
+            ]
+        ]
+    },
+    {
+        "id": "a420630f3830caec",
+        "type": "http request",
+        "z": "fc2b7b9b90c57472",
+        "g": "2fa1e3c3dc7f76ae",
+        "name": "saveToBytes",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:1997",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1110,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0ac37ff5154b14c3",
+        "type": "link in",
+        "z": "c4ea219c57a9b6fc",
+        "g": "657ce9447e1e8498",
+        "name": "Whisker_link_in",
+        "links": [
+            "47d196d6ac9ee791",
+            "d4740b9c2992f229"
+        ],
+        "x": 75,
+        "y": 660,
+        "wires": [
+            [
+                "96e29305488e8efc"
+            ]
+        ]
+    },
+    {
+        "id": "223bf92f6324f952",
+        "type": "csv",
+        "z": "c4ea219c57a9b6fc",
+        "g": "657ce9447e1e8498",
+        "name": "HTTP to array Object",
+        "sep": ":",
+        "hdrin": "",
+        "hdrout": "none",
+        "multi": "mult",
+        "ret": "\\n",
+        "temp": "Hash_tail,count",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": "",
+        "include_null_values": "",
+        "x": 420,
+        "y": 660,
+        "wires": [
+            [
+                "bbef824647dc92c6"
+            ]
+        ]
+    },
+    {
+        "id": "bbef824647dc92c6",
+        "type": "function",
+        "z": "c4ea219c57a9b6fc",
+        "g": "657ce9447e1e8498",
+        "name": "searchHTTPResponseForMatch",
+        "func": "// First, set the timestamp\nlet ts = new Date().toISOString();\nmsg.ts = ts;\n\n// Collect the number of candidate hash suffixes  \nlet suffix_candidates = msg.payload.length;\nmsg.suffix_candidates = suffix_candidates;\n\n// Transform the hash to be uppercase\nlet true_hash = msg.hash.toUpperCase();\n\n// Define the search target (final part of the true hash)\nlet true_hash_tail = true_hash.slice(5);\n\n// Iterate the candidate hash suffixes for a match and save the outcome\nfunction findMatch(arr_item){\n    return arr_item.Hash_tail == true_hash_tail;\n}\nlet match = msg.payload.find(findMatch);\n\n// Return only the finding instead of the full list of options\nmsg.payload = {\"Hash\": msg.hash, \"count\": match.count};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 690,
+        "y": 660,
+        "wires": [
+            [
+                "1c82dd599fc06a04"
+            ]
+        ],
+        "outputLabels": [
+            "Enriched HTTP response in JSON"
+        ],
+        "info": "Message structure:\r\n\r\nmsg.payload = [Object{Hash_tail: \"abc...\", count: 23}, Object, ...]\r\n"
+    },
+    {
+        "id": "d253516057fa5798",
+        "type": "function",
+        "z": "c4ea219c57a9b6fc",
+        "g": "5eb5f0d4d9533ec8",
+        "name": "yourCodeHere",
+        "func": "msg.payload = \"your output here\";\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 220,
+        "y": 560,
+        "wires": [
+            [
+                "b4ed089d9d4f4189"
+            ]
+        ]
+    },
+    {
+        "id": "61a3592b84c394d8",
+        "type": "switch",
+        "z": "c4ea219c57a9b6fc",
+        "g": "95dd8d8b215036db",
+        "name": "routeToWhisker",
+        "property": "normalizer",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "001hibpwnd",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "b",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "c",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "d",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "x",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 6,
+        "x": 380,
+        "y": 320,
+        "wires": [
+            [
+                "d4740b9c2992f229"
+            ],
+            [
+                "682fae832aa4e5eb"
+            ],
+            [
+                "b2a15b6fda9512a7"
+            ],
+            [
+                "869e5c898a8b7659"
+            ],
+            [
+                "dbe7ede0d6692828"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "3a427b4c0c22778a",
+        "type": "tcp in",
+        "z": "c4ea219c57a9b6fc",
+        "g": "95dd8d8b215036db",
+        "name": "Receive NormalizerTask",
+        "server": "server",
+        "host": "",
+        "port": "1997",
+        "datamode": "stream",
+        "datatype": "utf8",
+        "newline": "",
+        "topic": "",
+        "trim": false,
+        "base64": false,
+        "tls": "",
+        "x": 170,
+        "y": 240,
+        "wires": [
+            [
+                "3a230f4af525aa39",
+                "f3d62834f8d55d6a"
+            ]
+        ]
+    },
+    {
+        "id": "d4740b9c2992f229",
+        "type": "link out",
+        "z": "c4ea219c57a9b6fc",
+        "g": "95dd8d8b215036db",
+        "name": "runWhisker#001",
+        "mode": "link",
+        "links": [
+            "0ac37ff5154b14c3"
+        ],
+        "x": 545,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "682fae832aa4e5eb",
+        "type": "link out",
+        "z": "c4ea219c57a9b6fc",
+        "g": "95dd8d8b215036db",
+        "name": "runWhisker#002",
+        "mode": "link",
+        "links": [],
+        "x": 545,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "b2a15b6fda9512a7",
+        "type": "link out",
+        "z": "c4ea219c57a9b6fc",
+        "g": "95dd8d8b215036db",
+        "name": "runWhisker#003",
+        "mode": "link",
+        "links": [],
+        "x": 545,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "869e5c898a8b7659",
+        "type": "link out",
+        "z": "c4ea219c57a9b6fc",
+        "g": "95dd8d8b215036db",
+        "name": "runWhisker#004",
+        "mode": "link",
+        "links": [],
+        "x": 545,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "dbe7ede0d6692828",
+        "type": "link out",
+        "z": "c4ea219c57a9b6fc",
+        "g": "95dd8d8b215036db",
+        "name": "runWhisker#00x",
+        "mode": "link",
+        "links": [
+            "78ba3ed29f66e36d"
+        ],
+        "x": 545,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "0db21cefa35bca92",
+        "type": "comment",
+        "z": "c4ea219c57a9b6fc",
+        "name": "#001 HIBPwnd",
+        "info": "",
+        "x": 680,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "8b9d743bc8d21e27",
+        "type": "comment",
+        "z": "c4ea219c57a9b6fc",
+        "name": "#002 XYZ",
+        "info": "",
+        "x": 680,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "2b922c577d4b703f",
+        "type": "comment",
+        "z": "c4ea219c57a9b6fc",
+        "name": "#003 XYZ",
+        "info": "",
+        "x": 680,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "60a0f34c407c9498",
+        "type": "comment",
+        "z": "c4ea219c57a9b6fc",
+        "name": "#004 XYZ",
+        "info": "",
+        "x": 680,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "0ee1e24caf631397",
+        "type": "comment",
+        "z": "c4ea219c57a9b6fc",
+        "name": "#00x Template",
+        "info": "",
+        "x": 680,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "2b018c9dbe7d3f3e",
+        "type": "link in",
+        "z": "c4ea219c57a9b6fc",
+        "g": "e2340d371d1ebe4c",
+        "name": "saveWhisker#001",
+        "links": [
+            "1c82dd599fc06a04"
+        ],
+        "x": 815,
+        "y": 200,
+        "wires": [
+            [
+                "2ad16c66b926fa74"
+            ]
+        ]
+    },
+    {
+        "id": "941ec869eebea102",
+        "type": "link in",
+        "z": "c4ea219c57a9b6fc",
+        "g": "e2340d371d1ebe4c",
+        "name": "saveWhisker#002",
+        "links": [],
+        "x": 815,
+        "y": 260,
+        "wires": [
+            [
+                "2ad16c66b926fa74"
+            ]
+        ]
+    },
+    {
+        "id": "125d003d0a46272e",
+        "type": "link in",
+        "z": "c4ea219c57a9b6fc",
+        "g": "e2340d371d1ebe4c",
+        "name": "saveWhisker#003",
+        "links": [],
+        "x": 815,
+        "y": 320,
+        "wires": [
+            [
+                "2ad16c66b926fa74"
+            ]
+        ]
+    },
+    {
+        "id": "41c261c803182533",
+        "type": "link in",
+        "z": "c4ea219c57a9b6fc",
+        "g": "e2340d371d1ebe4c",
+        "name": "saveWhisker#004",
+        "links": [],
+        "x": 815,
+        "y": 380,
+        "wires": [
+            [
+                "2ad16c66b926fa74"
+            ]
+        ]
+    },
+    {
+        "id": "fae5d0723f3b9bed",
+        "type": "link in",
+        "z": "c4ea219c57a9b6fc",
+        "g": "e2340d371d1ebe4c",
+        "name": "saveWhisker#00x",
+        "links": [
+            "b4ed089d9d4f4189"
+        ],
+        "x": 815,
+        "y": 440,
+        "wires": [
+            [
+                "2ad16c66b926fa74"
+            ]
+        ]
+    },
+    {
+        "id": "b4ed089d9d4f4189",
+        "type": "link out",
+        "z": "c4ea219c57a9b6fc",
+        "g": "5eb5f0d4d9533ec8",
+        "name": "Whisker#00n_out",
+        "mode": "link",
+        "links": [
+            "fae5d0723f3b9bed"
+        ],
+        "x": 375,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "78ba3ed29f66e36d",
+        "type": "link in",
+        "z": "c4ea219c57a9b6fc",
+        "g": "5eb5f0d4d9533ec8",
+        "name": "Boefje#00n_in",
+        "links": [
+            "dbe7ede0d6692828"
+        ],
+        "x": 75,
+        "y": 560,
+        "wires": [
+            [
+                "d253516057fa5798"
+            ]
+        ]
+    },
+    {
+        "id": "1c82dd599fc06a04",
+        "type": "link out",
+        "z": "c4ea219c57a9b6fc",
+        "g": "657ce9447e1e8498",
+        "name": "Whisker#001_out",
+        "mode": "link",
+        "links": [
+            "2b018c9dbe7d3f3e"
+        ],
+        "x": 875,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "3a230f4af525aa39",
+        "type": "function",
+        "z": "c4ea219c57a9b6fc",
+        "g": "95dd8d8b215036db",
+        "name": "parseNormalizerTask",
+        "func": "// Split the HTTP message into multiple lines\nlet s = msg.payload.split(/\\r?\\n/);\n\n// Extract the Normalizer and OOI and set them as message payload\nlet p = JSON.parse(s[7]);\nmsg.payload = p;\n\n// NOTE: for this PoC, the NormalizerTask is the direct (to Bytes) output of the boefje\nmsg.normalizer = msg.payload.boefje;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 180,
+        "y": 320,
+        "wires": [
+            [
+                "61a3592b84c394d8"
+            ]
+        ]
+    },
+    {
+        "id": "2ad16c66b926fa74",
+        "type": "function",
+        "z": "c4ea219c57a9b6fc",
+        "g": "e2340d371d1ebe4c",
+        "name": "preparePOST",
+        "func": "// Create a clean new message for the HTTP POST node\nlet bytesMsg = {};\n\n// Set the body of the HTTP POST request to the output of the NormalizerTask\nlet requestBody = {\"Finding\": msg.payload, \"normalizer\": msg.normalizer, \"arguments\": msg.arguments};\n\n// Embed the request body in the message for the HTTP POST\nbytesMsg.payload = requestBody;\n\n// Optional: set the headers of the HTTP POST request\nbytesMsg.headers = \"\";\n\nreturn bytesMsg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 960,
+        "y": 320,
+        "wires": [
+            [
+                "a27bdb5d181fa68e",
+                "a937a5532a67d809"
+            ]
+        ]
+    },
+    {
+        "id": "a27bdb5d181fa68e",
+        "type": "http request",
+        "z": "c4ea219c57a9b6fc",
+        "g": "e2340d371d1ebe4c",
+        "name": "saveToOctopoes",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:1998",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1170,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "96e29305488e8efc",
+        "type": "change",
+        "z": "c4ea219c57a9b6fc",
+        "g": "657ce9447e1e8498",
+        "name": "formatMessage",
+        "rules": [
+            {
+                "t": "set",
+                "p": "boefje",
+                "pt": "msg",
+                "to": "payload.boefje",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "hash",
+                "pt": "msg",
+                "to": "payload.arguments.hash",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.produced",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "arguments",
+                "pt": "msg",
+                "to": "{}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 200,
+        "y": 660,
+        "wires": [
+            [
+                "223bf92f6324f952"
+            ]
+        ]
+    },
+    {
+        "id": "f3d62834f8d55d6a",
+        "type": "ui_text",
+        "z": "c4ea219c57a9b6fc",
+        "g": "094b7deee473bd3a",
+        "group": "d81513205be55697",
+        "order": 1,
+        "width": 6,
+        "height": 6,
+        "name": "whiskerHTTPPOST",
+        "label": "HTTP POST received from OpenKAT",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "http",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 390,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "35d69871130d018d",
+        "type": "inject",
+        "z": "c4ea219c57a9b6fc",
+        "g": "094b7deee473bd3a",
+        "name": "start",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "no HTTP received",
+        "payloadType": "str",
+        "x": 130,
+        "y": 100,
+        "wires": [
+            [
+                "f3d62834f8d55d6a"
+            ]
+        ]
+    },
+    {
+        "id": "a937a5532a67d809",
+        "type": "change",
+        "z": "c4ea219c57a9b6fc",
+        "g": "094b7deee473bd3a",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.Finding.count",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1160,
+        "y": 100,
+        "wires": [
+            [
+                "833dd03dbd2a12fb"
+            ]
+        ]
+    },
+    {
+        "id": "833dd03dbd2a12fb",
+        "type": "ui_text",
+        "z": "c4ea219c57a9b6fc",
+        "g": "094b7deee473bd3a",
+        "group": "914c72c6142ddf4a",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Times password compromised:",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 1410,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "4ed30444bf6a89aa",
+        "type": "inject",
+        "z": "c4ea219c57a9b6fc",
+        "g": "094b7deee473bd3a",
+        "name": "inject",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "not submitted yet",
+        "payloadType": "str",
+        "x": 1190,
+        "y": 60,
+        "wires": [
+            [
+                "833dd03dbd2a12fb"
+            ]
+        ]
+    },
+    {
+        "id": "1706f4b78906b159",
+        "type": "http request",
+        "z": "d088de706e946215",
+        "g": "ffa881965977b8b1",
+        "name": "POST to 1995",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:1995",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 800,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4ec7c865e85b0380",
+        "type": "inject",
+        "z": "d088de706e946215",
+        "g": "ffa881965977b8b1",
+        "name": "manual",
+        "props": [
+            {
+                "p": "hash",
+                "v": "8be3c943b1609fffbfc51aad666d0a04adf83c9d",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 230,
+        "y": 60,
+        "wires": [
+            [
+                "e6ccab3f8ef2a4a0"
+            ]
+        ]
+    },
+    {
+        "id": "0a7ece1b7e8e9bf7",
+        "type": "ui_text",
+        "z": "d088de706e946215",
+        "g": "ffa881965977b8b1",
+        "group": "25e46aeab62c4713",
+        "order": 1,
+        "width": 6,
+        "height": 6,
+        "name": "OctopoesHTTP",
+        "label": "HTTP POST sent to Octopoes",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "http2",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 600,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "8d8178bf12200c7b",
+        "type": "inject",
+        "z": "d088de706e946215",
+        "g": "ffa881965977b8b1",
+        "name": "start",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "no HTTP sent",
+        "payloadType": "str",
+        "x": 430,
+        "y": 440,
+        "wires": [
+            [
+                "0a7ece1b7e8e9bf7",
+                "8d959d7bfd066e9c"
+            ]
+        ]
+    },
+    {
+        "id": "e9e889a5cc2e9d49",
+        "type": "tcp in",
+        "z": "d088de706e946215",
+        "g": "ffa881965977b8b1",
+        "name": "",
+        "server": "server",
+        "host": "",
+        "port": "1998",
+        "datamode": "stream",
+        "datatype": "utf8",
+        "newline": "",
+        "topic": "",
+        "trim": false,
+        "base64": false,
+        "tls": "",
+        "x": 420,
+        "y": 360,
+        "wires": [
+            [
+                "0a7ece1b7e8e9bf7"
+            ]
+        ]
+    },
+    {
+        "id": "3fd4bd575accb4fc",
+        "type": "function",
+        "z": "d088de706e946215",
+        "g": "ffa881965977b8b1",
+        "name": "prepareBPOST",
+        "func": "msg.payload = {\"Boefje\":\"001hibpwnd\", \"input_ooid\":{\"SHA1_hash\":msg.hash}};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 120,
+        "wires": [
+            [
+                "1706f4b78906b159"
+            ]
+        ]
+    },
+    {
+        "id": "64f03b078d21c06c",
+        "type": "ui_text",
+        "z": "d088de706e946215",
+        "g": "ffa881965977b8b1",
+        "group": "914c72c6142ddf4a",
+        "order": 1,
+        "width": "10",
+        "height": "2",
+        "name": "demoText",
+        "label": "This block simulates the OpenKAT side of the integration. Since it is not safe to store passwords in plain text (even in OpenKAT), you need to provide a SHA1 password hash. You can create a hash using CyberChef here: ",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 140,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "80e90011397675ae",
+        "type": "ui_template",
+        "z": "d088de706e946215",
+        "g": "ffa881965977b8b1",
+        "group": "914c72c6142ddf4a",
+        "name": "openCyberChef",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "format": "<button class=\"md-raised nr-dashboard-form-button md-button md-ink-ripple\" onclick=\"window.open('https://gchq.github.io/CyberChef/#recipe=SHA1(80)');\" style=\"height:44px;line-height:44px;margin:auto\">Open CyberChef</button>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 160,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "61819423d03c87f8",
+        "type": "ui_text",
+        "z": "d088de706e946215",
+        "g": "ffa881965977b8b1",
+        "group": "914c72c6142ddf4a",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "demoText3",
+        "label": "Paste the SHA1 hash of your password in the field below and press \"send\" to run the Boefje and Whisker in Node-RED.",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 150,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "88f4c857a9871988",
+        "type": "ui_form",
+        "z": "d088de706e946215",
+        "g": "ffa881965977b8b1",
+        "name": "",
+        "label": "",
+        "group": "914c72c6142ddf4a",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "Your SHA1 hash",
+                "value": "hash",
+                "type": "text",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "hash": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "splitLayout": "",
+        "className": "",
+        "x": 230,
+        "y": 180,
+        "wires": [
+            [
+                "f527fa05a9fd4208",
+                "e780b995301d6b3b"
+            ]
+        ]
+    },
+    {
+        "id": "e6ccab3f8ef2a4a0",
+        "type": "change",
+        "z": "d088de706e946215",
+        "g": "ffa881965977b8b1",
+        "name": "standardHash",
+        "rules": [
+            {
+                "t": "set",
+                "p": "hash",
+                "pt": "msg",
+                "to": "8be3c943b1609fffbfc51aad666d0a04adf83c9d",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 400,
+        "y": 60,
+        "wires": [
+            [
+                "3fd4bd575accb4fc"
+            ]
+        ]
+    },
+    {
+        "id": "f527fa05a9fd4208",
+        "type": "change",
+        "z": "d088de706e946215",
+        "g": "ffa881965977b8b1",
+        "name": "customHash",
+        "rules": [
+            {
+                "t": "set",
+                "p": "hash",
+                "pt": "msg",
+                "to": "payload.hash",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 410,
+        "y": 180,
+        "wires": [
+            [
+                "3fd4bd575accb4fc",
+                "70ef119f90b72403"
+            ]
+        ]
+    },
+    {
+        "id": "5e8601b5e3623de2",
+        "type": "ui_toast",
+        "z": "d088de706e946215",
+        "g": "ffa881965977b8b1",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "",
+        "x": 790,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "70ef119f90b72403",
+        "type": "change",
+        "z": "d088de706e946215",
+        "g": "ffa881965977b8b1",
+        "name": "prepNotification",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Hash send",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 600,
+        "y": 180,
+        "wires": [
+            [
+                "5e8601b5e3623de2"
+            ]
+        ]
+    },
+    {
+        "id": "8d959d7bfd066e9c",
+        "type": "ui_text",
+        "z": "d088de706e946215",
+        "g": "ffa881965977b8b1",
+        "group": "e3a83b5904ce059a",
+        "order": 1,
+        "width": 6,
+        "height": 6,
+        "name": "BytesHTTP",
+        "label": "HTTP POST sent to Bytes:",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "http",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 590,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "cad3742c2d14944d",
+        "type": "tcp in",
+        "z": "d088de706e946215",
+        "g": "ffa881965977b8b1",
+        "name": "",
+        "server": "server",
+        "host": "",
+        "port": "1996",
+        "datamode": "stream",
+        "datatype": "utf8",
+        "newline": "",
+        "topic": "",
+        "trim": false,
+        "base64": false,
+        "tls": "",
+        "x": 420,
+        "y": 520,
+        "wires": [
+            [
+                "8d959d7bfd066e9c"
+            ]
+        ]
+    },
+    {
+        "id": "7a52bc4095bdc5be",
+        "type": "ui_button",
+        "z": "d088de706e946215",
+        "g": "ffa881965977b8b1",
+        "name": "show_raw",
+        "group": "914c72c6142ddf4a",
+        "order": 7,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "show raw HTTP",
+        "tooltip": "",
+        "color": "blue",
+        "bgcolor": "white",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 580,
+        "y": 260,
+        "wires": [
+            [
+                "c6496e5a53174c4d"
+            ]
+        ]
+    },
+    {
+        "id": "c6496e5a53174c4d",
+        "type": "ui_ui_control",
+        "z": "d088de706e946215",
+        "g": "ffa881965977b8b1",
+        "name": "",
+        "events": "all",
+        "x": 720,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "88c3e72d027b6bd2",
+        "type": "inject",
+        "z": "d088de706e946215",
+        "g": "ffa881965977b8b1",
+        "name": "hide",
+        "props": [
+            {
+                "p": "enabled",
+                "v": "false",
+                "vt": "bool"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 430,
+        "y": 280,
+        "wires": [
+            [
+                "7a52bc4095bdc5be"
+            ]
+        ]
+    },
+    {
+        "id": "e780b995301d6b3b",
+        "type": "change",
+        "z": "d088de706e946215",
+        "g": "ffa881965977b8b1",
+        "name": "show",
+        "rules": [
+            {
+                "t": "set",
+                "p": "enabled",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 430,
+        "y": 240,
+        "wires": [
+            [
+                "7a52bc4095bdc5be"
+            ]
+        ]
+    },
+    {
+        "id": "4fd3f50174e4989f",
+        "type": "ui_template",
+        "z": "d088de706e946215",
+        "g": "ffa881965977b8b1",
+        "group": "e3a83b5904ce059a",
+        "name": "CSS",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "format": "<style> \n.http{\n    overflow: hidden;\n}\n.http2{\n    word-break: break-word;\n}\n</style>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "global",
+        "className": "",
+        "x": 130,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    }
+]
